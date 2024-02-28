@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DOS_PPE</title>
+    <link rel="icon" type="image/.png" href="https://omnia.dexon-technology.com/File/Image/favicon.ico" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/template.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DOS_PPE.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+</head>
+<body class="m-0">
+    @{
+        var showNavbar = true; // ตั้งค่าเริ่มต้นว่าต้องการแสดง Navbar
+        var HideNavbar = ViewData["HideNavbar"];
+
+        if (HideNavbar != null && bool.TryParse(HideNavbar.ToString(), out bool hideNavbarValue))
+        {
+            showNavbar = false; // ถ้ามีข้อมูล ViewData["HideNavbar"] เป็น true กำหนดให้ไม่แสดง Navbar
+        }
+    }
+
+    @if (showNavbar)
+    {
+        <div class="wrapper">
+            <!-- Sidebar  -->
+            <nav id="sidebar" class="bg-navbar">
+                <div class="sidebar-header text-center">
+                    <img src="~/image/dos_logo.png" class="logo" />
+                </div>
+
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a asp-controller="" asp-action="">
+                            <i class="bi bi-bar-chart-line-fill ms-3"></i>
+                            <span class="ps-2">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="dd-btn">
+                        <a>
+                            <i class="bi bi-calendar3 ms-3"></i>
+                            <span class="ps-2">Booking</span>
+                        </a>
+                    </li>
+
+                    <li class="dd-btn">
+                        <a>
+                            <i class="bi bi-files ms-3"></i>
+                            <span class="ps-2">Request</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="position-absolute width250 bottom-0 start-0 px-4 mb-4 mt-0 text-center">
+                    <hr>
+                    <span>Personal Protective Equipment</span>
+                    <hr>
+                </div>
+            </nav>
+
+            <div id="content" class="bg-background">
+                <nav class="navbar bg-white shadow-sm p-0">
+                    <div class="container-fluid">
+                        <button type="button" id="sidebarCollapse" class="button-toggle-menu">
+                            <i class="bi bi-list fs-3"></i>
+                        </button>
+                        <ul class="dropdown font-black-two m-0 p-2">
+                            <a role="button" data-bs-toggle="dropdown" class="d-flex font-black-two profile">
+                                <span class="p-2">
+                                    <img src="~/image/person.jpg" width="32" class="rounded-circle">
+                                </span>
+                                <span class="d-lg-flex flex-column gap-1 d-none">
+                                    <h5 class="fw-bold my-0 fs-6">Prayut Chan-o-cha</h5>
+                                    <h6 class="my-0 fs-6">DEXT-000</h6>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu bg-white m-0 p-3" id="showpro">
+                                <a class="pt-2 pb-2 ps-3 btndrowdownprofile text-decoration-none rounded-3">
+                                    <div class="row">
+                                        <div class="col-auto pe-2">
+                                            <img src="~/image/person.jpg" width="60" class="rounded-3">
+                                        </div>
+                                        <div class="col-auto ">
+                                            <p class="text-decoration-none p-0 m-0 fw-bold">Prayut Chan-o-cha</p>
+                                            <p class="text-decoration-none p-0 m-0">DEXT-000</p>
+                                        </div>
+                                    </div>
+
+
+                                </a>
+                                <a class="pt-2 pb-2 ps-3 btndrowdownprofile text-decoration-none rounded-3">
+                                    <i class="bi bi-person-fill"></i>
+                                    <span class="ps-2 text-decoration-none">My Profile</span>
+                                </a>
+                                <a class="pt-2 pb-2 ps-3 btndrowdownprofile text-decoration-none rounded-3" asp-controller="Home" asp-action="Logout">
+                                    <i class="bi bi-box-arrow-in-right"></i>
+                                    <span class="ps-2 text-decoration-none">Sign out</span>
+                                </a>
+                            </div>
+
+                            <div class="dropdown-menu bg-white m-0 p-0">
+                                <a class="pt-2 pb-2 ps-3 btndrowdownprofile text-decoration-none">
+                                    <i class="bi bi-person-fill"></i>
+                                    <span class="ps-2 text-decoration-none">My Account</span>
+                                </a>
+                                <a class="pt-2 pb-2 ps-3 btndrowdownprofile text-decoration-none">
+                                    <i class="bi bi-box-arrow-in-right"></i>
+                                    <span class="ps-2 text-decoration-none">Log out</span>
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid px-4 mt-4 pb-5 mb-5">
+                    <main role="main">
+                        @RenderBody()
+                    </main>
+                </div>
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 bottom-0 pb-3 position-absolute">
+                                <script>document.write(new Date().getFullYear())</script> © DEXON Technology Public Company Limited
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <a class="rounded-circle btn bg-blue-three  position-fixed bottom-0 end-0 me-4 me-lg-7 mb-5 zindextop" role="button" id="ontop" onclick="window.scrollTo(0, 0);">
+                    <i class="bi bi-caret-up-fill"></i>
+                </a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container-fluid m-0 p-0">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    }
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+            $('.dd-btn').on('click', function () {
+                $('.list').removeClass('active');
+                $(this).toggleClass('active');
+                var ddbtn = $(this).next('.dd-list');
+                var icon = $(this).find('i');
+                if (ddbtn.is(':visible')) {
+                    ddbtn.hide();
+                    icon.removeClass('bi-chevron-up').addClass('bi-chevron-down');
+                } else {
+                    ddbtn.show();
+                    icon.removeClass('bi-chevron-down').addClass('bi-chevron-up');
+                }
+            });
+
+            $('.dd-btn.active').each(function () {
+                var icon = $(this).find('i');
+                icon.removeClass('bi-chevron-down').addClass('bi-chevron-up');
+            });
+
+            $(window).scroll(function () {
+                if ($(this).scrollTop() === 0) {
+
+                    $('#ontop').hide();
+
+                } else {
+
+                    $('#ontop').show();
+
+                }
+
+            });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
