@@ -1,6 +1,282 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "List";
+    int i = 1;
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<!-- start page title -->
+<div class="row mt-3">
+    <div class="col-lg-9 col-sm-12">
+        <h5 class="font-black-two fw-semibold">Template</h5>
+    </div>
+    <div aria-label="breadcrumb" class="col-lg-3 col-sm-12" id="navlable">
+        <ol class="breadcrumb float-end">
+            <li><a class="font-black-three" asp-controller="Home" asp-action="Task">Template</a><i class="bi bi-chevron-right"></i></li>
+            <li class="font-blue-two" aria-current="page">List</li>
+        </ol>
+    </div>
+</div>
+<!-- end page title -->
+
+<div class="mt-2 col-12" id="view">
+    <div class="card border-0 flex-fill w-100 rounded-3 shadow-sm">
+
+        <div class="card-header border-0 bg-white p-0">
+            <div class="pt-4 pb-2 ps-4">
+                <h5 class="text-uppercase fw-bold">
+                    <i class="bi bi-card-checklist"></i> Template List
+                </h5>
+            </div>
+        </div>
+        <hr class="my-0">
+        <div class="d-flex ms-3 py-2">
+            <a data-bs-toggle="modal" data-bs-target="#AddIssue" class="btn btn-blue btn-sm rounded me-2"><i class="bi bi-plus-circle-fill"></i> Create</a>
+            <div class="ms-auto text-end pe-2">
+                <div class="d-flex">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" placeholder="Search..." id="searchInput">
+                        <div class="btn btn-dark"><i class="bi bi-search"></i></div>
+                    </div>
+                    <button type="button" class="btn btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-filter"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="renderFilter('All')">All</a></li>
+                        <li><a class="dropdown-item" onclick="renderFilter('Draft')">Draft</a></li>
+                        <li><a class="dropdown-item" onclick="renderFilter('Progress')">In Progress</a></li>
+                        <li><a class="dropdown-item" onclick="renderFilter('Completed')">Completed</a></li>
+                        <li><a class="dropdown-item" onclick="renderFilter('Rejected')">Rejected</a></li>
+                        <li><a class="dropdown-item" onclick="renderFilter('Closed')">Closed</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="my-1">
+
+        @if (1 == 0)
+        {
+            <div class="p-4">
+                <div class="alert alert-yellow alert-dismissible fade show" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i> ILI Issue Tracker not found!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive d-none d-xl-block">
+                <table class="table table-striped table-hover align-middle mb-0 small" id="table-data">
+                    <thead>
+                        <tr class="align-middle">
+                            <th class="text-start" width="10">#</th>
+                            <th>
+                                <div class="d-flex">
+                                    Tools
+                                    <span class="ps-1 pt-1" onclick="sortCol('0')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo0"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo0"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex">
+                                    Project No.
+                                    <span class="ps-1 pt-1" onclick="sortCol('1')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo1"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo1"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex">
+                                    Issue No.
+                                    <span class="ps-1 pt-1" onclick="sortCol('2')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo2"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo2"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex">
+                                    Rev. No.
+                                    <span class="ps-1 pt-1" onclick="sortCol('3')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo3"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo3"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex">
+                                    Description
+                                    <span class="ps-1 pt-1" onclick="sortCol('4')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo4"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo4"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex">
+                                    Issue Date
+                                    <span class="ps-1 pt-1" onclick="sortCol('5')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo5"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo5"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex">
+                                    Due Date
+                                    <span class="ps-1 pt-1" onclick="sortCol('6')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo6"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo6"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex">
+                                    Advance notification date
+                                    <span class="ps-1 pt-1" onclick="sortCol('7')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo7"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo7"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex">
+                                    Person In Charge
+                                    <span class="ps-1 pt-1" onclick="sortCol('8')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo8"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo8"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex">
+                                    Priority
+                                    <span class="ps-1 pt-1" onclick="sortCol('9')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo9"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo9"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex">
+                                    Status
+                                    <span class="ps-1 pt-1" onclick="sortCol('10')">
+                                        <a class="bi bi-caret-up-fill fs06 d-flex text-body-tertiary" id="ascMo10"></a>
+                                        <a class="bi bi-caret-down-fill fs06 d-flex text-body-tertiary" id="descMo10"></a>
+                                    </span>
+                                </div>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row filter-row [StatusForFilter]">
+                            <th class="text-start">@(i++)</th>
+                            <td>
+                                Test1
+                            </td>
+                            <td>
+                                Pro_Code1
+                            </td>
+                            <td>
+                                Issue_No1
+                            </td>
+                            <td>
+                                Rev_id1
+                            </td>
+                            <td class="ellipsis-text-tb">
+                                Descriptions1
+                            </td>
+                            <td>
+                                Submit Date1
+                            </td>
+                            <td>
+                                Due Date1
+                            </td>
+                            <td>
+                                Advance1
+                            </td>
+                            <td>
+                                <img width="32" class="rounded-circle" src="https://omnia.dexon-technology.com/File/Image/Profile/DEXT-981.jpg">
+                                Saraphat
+                            </td>
+                            <td>
+                                Priority1
+                            </td>
+                            <td>
+                                <i class="bi bi-circle-fill small font-green-two"></i>
+                                <span> Completed</span>
+                            </td>
+                            <td class="text-end">
+                                <form method="POST" asp-controller="Home" asp-action="Privacy">
+                                    <input type="text" value="1" name="id" id="id" hidden>
+                                    <button class="btn btn-sm font-blue-two" type="submit">View <i class="bi bi-chevron-right"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+
+                        <tr class="table-row filter-row [StatusForFilter]">
+                            <th class="text-start">@(i++)</th>
+                            <td>
+                                Test2
+                            </td>
+                            <td>
+                                Pro_Code2
+                            </td>
+                            <td>
+                                Issue_No2
+                            </td>
+                            <td>
+                                Rev_id2
+                            </td>
+                            <td class="ellipsis-text-tb">
+                                Descriptions2
+                            </td>
+                            <td>
+                                Submit Date2
+                            </td>
+                            <td>
+                                Due Date2
+                            </td>
+                            <td>
+                                Advance2
+                            </td>
+                            <td>
+                                <img width="32" class="rounded-circle" src="https://omnia.dexon-technology.com/File/Image/Profile/DEXT-166.jpg">
+                                Tleeee
+                            </td>
+                            <td>
+                                Priority2
+                            </td>
+                            <td>
+                                <i class="bi bi-circle-fill small font-red-two"></i>
+                                <span> Reject</span>
+                            </td>
+                            <td class="text-end">
+                                <form method="POST" asp-controller="Home" asp-action="Privacy">
+                                    <input type="text" value="2" name="id" id="id" hidden>
+                                    <button class="btn btn-sm font-blue-two" type="submit">View <i class="bi bi-chevron-right"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/filter.js"></script>
+
+<script>
+    //กดที่ปุ่มเพื่อค้นหา
+    function renderFilter(statusFilter) {
+        if (statusFilter === "All") {
+            $(".filter-row").show();
+        } else {
+            $(".filter-row").hide();
+            $(".filter-row." + statusFilter).show();
+        }
+    }
+</script>

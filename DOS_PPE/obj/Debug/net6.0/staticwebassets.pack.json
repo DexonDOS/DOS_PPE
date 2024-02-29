@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\image\\person.jpg"
     },
     {
+      "Id": "C:\\Users\\nidchanan.wiangthong\\source\\repos\\DOS_PPE\\DOS_PPE\\wwwroot\\js\\filter.js",
+      "PackagePath": "staticwebassets\\js\\filter.js"
+    },
+    {
       "Id": "C:\\Users\\nidchanan.wiangthong\\source\\repos\\DOS_PPE\\DOS_PPE\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
