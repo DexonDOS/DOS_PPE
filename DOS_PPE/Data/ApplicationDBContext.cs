@@ -28,6 +28,8 @@ namespace DOS_PPE.Data
             base.OnModelCreating(builder);
         }
 
+        public DbSet<PermissionModel> Permission { get; set; }
+
     }
 
 }
