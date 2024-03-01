@@ -174,12 +174,15 @@
                                         @permisdata.Modify_date.ToString("MMM dd,yyyy HH:mm:ss")
                                     </td>
                                     <td class="text-end">
-                                        <a class="btn btn-sm btn-yellow" data-bs-toggle="modal" data-bs-target="#EditAd" data-edit-id="@permisdata.ID_permis">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </a>
-                                        <a onclick="deletead(@permisdata.ID_permis)" class="btn btn-sm btn-red">
-                                            <i class="bi bi-trash3-fill"></i>
-                                        </a>
+                                        @if (@permisdata.employee_id != ViewData["employee_id"] as string)
+                                        {
+                                            <a class="btn btn-sm btn-yellow" data-bs-toggle="modal" data-bs-target="#EditAd" data-edit-id="@permisdata.ID_permis">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a onclick="deletead(@permisdata.ID_permis)" class="btn btn-sm btn-red">
+                                                <i class="bi bi-trash3-fill"></i>
+                                            </a>
+                                        }
                                     </td>
                                 </tr>
                             }

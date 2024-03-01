@@ -28,7 +28,7 @@ namespace DOS_PPE.Controllers
         public IActionResult Index(string id)
         {
             string empid = "";
-            HttpContext.Session.SetString("employee_id", "DEXT-166");
+            HttpContext.Session.SetString("employee_id", "DEXT-1003");
             if (HttpContext.Session.GetString("employee_id") == null)
             {
                 byte[] base64Bytes = Convert.FromBase64String(id);
