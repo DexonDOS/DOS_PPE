@@ -23,9 +23,15 @@ namespace Rental.Controllers
             var employee_id = HttpContext.Session.GetString("employee_id");
 
             var employee = _contextemp.Employee.FirstOrDefault(u => u.employee_id == employee_id);
-
+            var permis = _context.Permission.FirstOrDefault(u => u.employee_id == employee_id);
+        
             if (employee != null)
             {
+                if (permis != null)
+                {
+                    ViewData["admin"] = "admin";
+                }
+
                 ViewData["name_en"] = employee.name_en;
                 ViewData["employee_id"] = employee.employee_id;
                 ViewData["profile_pic"] = employee.profile_pic;

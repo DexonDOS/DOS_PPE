@@ -28,7 +28,7 @@ namespace DOS_PPE.Controllers
         public IActionResult Index(string id)
         {
             string empid = "";
-            HttpContext.Session.SetString("employee_id", "DEXT-1003");
+            HttpContext.Session.SetString("employee_id", "DEXT-169");
             if (HttpContext.Session.GetString("employee_id") == null)
             {
                 byte[] base64Bytes = Convert.FromBase64String(id);
@@ -39,7 +39,7 @@ namespace DOS_PPE.Controllers
 
             if (SetLoginNameInViewData()) return RedirectToAction("Error", "Home");
 
-            return RedirectToAction("Permission", "Permission");
+            return RedirectToAction("Dashboard", "Dashboard");
         }
 
         public IActionResult Privacy()

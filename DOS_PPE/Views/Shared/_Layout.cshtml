@@ -37,62 +37,75 @@
                 </div>
 
                 <!-- Admin -->
-                <ul class="list-unstyled components">
-                    <small class="ps-2 font-black-four">Admin</small>
+                @if (ViewData["admin"] == "admin")
+                {
+                    <ul class="list-unstyled components">
+                        <small class="ps-2 font-black-four">Admin</small>
 
-                    <li class="list @ViewBag.Permission">
-                        <a class="nav-link" asp-area="" asp-controller="Permission" asp-action="Permission">
-                            <i class="bi bi-person-fill-gear ms-3"></i>
-                            <span class="ps-2">Permission</span>
-                        </a>
-                    </li>
-                    <hr />
-                </ul>
+                        <li class="list @ViewBag.Permission">
+                            <a class="nav-link" asp-area="" asp-controller="Permission" asp-action="Permission">
+                                <i class="bi bi-person-fill-gear ms-3"></i>
+                                <span class="ps-2">Permission</span>
+                            </a>
+                        </li>
+                        <hr />
+                    </ul>
+                
+                }
                 <!-- Employee -->
                 <ul class="list-unstyled components">
-                    <small class="ps-2 font-black-four">Employee</small>
-
-
-                    <li class="list">
-                        <a>
+                    @if (ViewData["admin"] == "admin")
+                    {
+                        <small class="ps-2 font-black-four">Approval</small>
+                    }
+                    else
+                    {
+                        <small class="ps-2 font-black-four">Employee</small>
+                    }
+                    <li class="list @ViewBag.Dashboard">
+                        <a class="nav-link" asp-area="" asp-controller="Dashboard" asp-action="Dashboard">
                             <i class="bi bi-bar-chart-line-fill ms-3"></i>
                             <span class="ps-2">Dashboard</span>
                         </a>
                     </li>
 
-                    <li class="list">
-                        <a>
-                            <i class="bi bi-calendar3 ms-3"></i>
-                            <span class="ps-2">Booking</span>
-                        </a>
-                    </li>
+                    @if (ViewData["admin"] == "admin")
+                    {
+                        <li class="list @ViewBag.Approval">
+                            <a class="nav-link" asp-area="" asp-controller="Dashboard" asp-action="Index_Approval">
+                                <i class="bi bi-check-all ms-3"></i>
+                                <span class="ps-2">Approval</span>
+                            </a>
+                        </li>
 
-                    <li class="list">
-                        <a>
-                            <i class="bi bi-clipboard-plus-fill ms-3"></i>
-                            <span class="ps-2">Request</span>
-                        </a>
-                    </li>
+                        <li class="list">
+                            <a>
+                                <i class="bi bi-database-fill-down ms-3"></i>
+                                <span class="ps-2">Goods Receipt</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="list">
+                            <a>
+                                <i class="bi bi-calendar3 ms-3"></i>
+                                <span class="ps-2">Booking</span>
+                            </a>
+                        </li>
+
+                        <li class="list">
+                            <a>
+                                <i class="bi bi-clipboard-plus-fill ms-3"></i>
+                                <span class="ps-2">Request</span>
+                            </a>
+                        </li>
+                    }
+
+                  
                     <hr />
                 </ul>
-                <!-- Approval -->
-                <ul class="list-unstyled components">
-                    <small class="ps-2 font-black-four">Approval</small>
-
-                    <li class="list">
-                        <a>
-                            <i class="bi bi-check-all ms-3"></i>
-                            <span class="ps-2">Approval</span>
-                        </a>
-                    </li>
-
-                    <li class="list">
-                        <a>
-                            <i class="bi bi-send-arrow-down-fill ms-3"></i>
-                            <span class="ps-2">Good Receipt</span>
-                        </a>
-                    </li>
-                </ul>
+               
 
                 <div class="position-absolute width250 bottom-0 start-0 px-4 mb-4 mt-0 text-center">
                     <hr>
@@ -118,7 +131,7 @@
                                 </span>
                             </a>
                             <div class="dropdown-menu bg-white m-0 p-3" id="showpro">
-                                <a class="pt-2 pb-2 ps-3 btndrowdownprofile text-decoration-none rounded-3">
+                                <a class="pt-2 pb-2 ps-3 btndrowdownprofile text-decoration-none rounded-3" asp-controller="Home" asp-action="backtohome">
                                     <div class="row">
                                         <div class="col-auto pe-2">
                                             <img src="https://omnia.dexon-technology.com/File/Image/Profile/@ViewData["profile_pic"]" width="60" class="rounded-3">
@@ -183,6 +196,7 @@
             </main>
         </div>
     }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
