@@ -28,14 +28,48 @@
                     </h5>
                     <div class="row">
                         <div class="col-auto pe-4 pb-lg-0 pb-2">
-                            <a class="font-blue pb-2 border-bottom border-info border-2" href="/Permission/Permission">Booking</a>
+                            <a class="font-black-one" onclick="showBookingId()" id="btnbooking">Booking</a>
                         </div>
                         <div class="col-auto pe-4 pb-lg-0 pb-2">
-                            <a class="font-black-one" href="/Permission/Permission">Goods Issue</a>
+                            <a class="font-black-one" onclick="showIssueId()" id="btnIssue">Goods Issue</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <hr class="my-0">
+            @*Id = Booking*@
+            <div class="ms-3 py-2" id="Dbooking">
+                <p>Booking</p>
+            </div>
+
+            @*Id = Goods Issue*@
+            <div class="ms-3 py-2" id="DGoods_Issue" >
+                <p>Goods Issue</p>
+            </div>
         </div>
     </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#btnbooking').removeClass('font-black-one').addClass('font-blue pb-2 border-bottom border-info border-2');
+        $('#Dbooking').show();
+        $('#DGoods_Issue').hide();
+    });
+
+
+    function showBookingId() {
+        $('#btnbooking').removeClass('font-black-one').addClass('font-blue pb-2 border-bottom border-info border-2');
+        $('#btnIssue').removeClass('font-blue pb-2 border-bottom border-info border-2').addClass('font-black-one');
+        $('#Dbooking').show();
+        $('#DGoods_Issue').hide();
+    }
+    function showIssueId() {
+        $('#btnIssue').removeClass('font-black-one').addClass('font-blue pb-2 border-bottom border-info border-2');
+        $('#btnbooking').removeClass('font-blue pb-2 border-bottom border-info border-2').addClass('font-black-one');
+        $('#Dbooking').hide();
+        $('#DGoods_Issue').show();
+    }
+</script>

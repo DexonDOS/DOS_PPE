@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Azp6QSAR1Sp8+GBZ4zse8QUNEBJVA8zvmbHuNgpyyAo=",
+  "Hash": "7imR3oSWermmbko6zoplNFOQcC/xy6h53Gf6YwLWExU=",
   "Source": "DOS_PPE",
   "BasePath": "_content/DOS_PPE",
   "Mode": "Default",
@@ -168,23 +168,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\image\\person.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\nidchanan.wiangthong\\source\\repos\\DOS_PPE\\DOS_PPE\\wwwroot\\js\\chartsJS.js",
-      "SourceId": "DOS_PPE",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nidchanan.wiangthong\\source\\repos\\DOS_PPE\\DOS_PPE\\wwwroot\\",
-      "BasePath": "_content/DOS_PPE",
-      "RelativePath": "js/chartsJS.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\chartsJS.js"
     },
     {
       "Identity": "C:\\Users\\nidchanan.wiangthong\\source\\repos\\DOS_PPE\\DOS_PPE\\wwwroot\\js\\filter.js",
