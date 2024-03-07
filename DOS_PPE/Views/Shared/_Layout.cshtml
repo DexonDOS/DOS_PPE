@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/css/template.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DOS_PPE.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <style>
     #ontop {
@@ -78,8 +78,8 @@
                             </a>
                         </li>
 
-                        <li class="list">
-                            <a>
+                        <li class="list @ViewBag.Receipt">
+                            <a class="nav-link" asp-area="" asp-controller="Dashboard" asp-action="Goods_Receipt">
                                 <i class="bi bi-database-fill-down ms-3"></i>
                                 <span class="ps-2">Goods Receipt</span>
                             </a>

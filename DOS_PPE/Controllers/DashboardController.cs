@@ -28,5 +28,12 @@ namespace DOS_PPE.Controllers
 
             return View();
         }
+
+        public IActionResult Goods_Receipt()
+        {
+            if (SetLoginNameInViewData()) return RedirectToAction("Error", "Home");
+
+            return View();
+        }
     }
 }

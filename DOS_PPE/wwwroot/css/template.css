@@ -47,6 +47,10 @@ img {
     user-drag: none;
 }
 
+/* pointer */
+.cursor-pointer {
+    cursor: pointer;
+}
 /* ---------------------------------------------------
     PANTONE COLOR OF BACKGROUND AND FONT
 ----------------------------------------------------- */
@@ -915,12 +919,12 @@ a.profile {
     LIST GROUP
 ----------------------------------------------------- */
 
-.list-group-item.active {
+/*.list-group-item.active {
     z-index: 2;
     color: var(--bs-list-group-active-color);
     background-color: var(--co-blue-two);
     border-color: var(--co-blue-two);
-}
+}*/
 
 /* ---------------------------------------------------
     Scrollbar
